@@ -1,0 +1,39 @@
+# WordPress values.yaml
+
+## WordPress configuration
+wordpressUsername: "admin"
+wordpressPassword: "password"
+wordpressEmail: "admin@example.com"
+wordpressFirstName: "Admin"
+wordpressLastName: "User"
+
+## MySQL configuration
+mariadb:
+  enabled: true
+  rootPassword: "rootpassword"
+  db: "wordpress"
+  user: "wordpressuser"
+  password: "wordpresspassword"
+
+## Persistence configuration (Longhorn)
+persistence:
+  enabled: true
+  storageClass: "longhorn"   # Use Longhorn for storage class
+  accessMode: ReadWriteOnce
+  size: 8Gi
+
+## Traefik Ingress configuration
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: "traefik"   # Specify Traefik as the ingress controller
+    traefik.ingress.kubernetes.io/router.entrypoints: "web,websecure"
+  path: "/"
+  host: wordpress.jtmb.cc
+  tls:
+    enabled: true
+    certResolver: "letsencrypt"  # Use Traefik's Let's Encrypt for TLS
+
+## Additional configurations
+service:
+  type: ClusterIP

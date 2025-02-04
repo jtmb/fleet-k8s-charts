@@ -1,0 +1,23 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: Bundle
+metadata:
+  name: wordpress-traefik-bundle
+  namespace: fleet-local
+spec:
+  resources:
+    - name: traefik
+      namespace: kube-system
+      targetNamespace: kube-system
+      chart:
+        name: traefik
+        version: 10.3.0   # Adjust the version as needed
+        repo: https://helm.traefik.io/traefik
+        valuesFile: ./charts/traefik/values.yaml
+    - name: wordpress
+      namespace: default
+      targetNamespace: default
+      chart:
+        name: wordpress
+        version: 11.0.0  # Adjust the version as needed
+        repo: https://charts.bitnami.com/bitnami
+        valuesFile: ./charts/wordpress/values.yaml
