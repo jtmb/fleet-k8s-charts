@@ -4,14 +4,16 @@ metadata:
   name: wordpress-traefik-bundle
   namespace: fleet-local
 spec:
-  clusterName: fleet-local  # Targeting the fleet-local cluster
+  clusterSelector:
+    matchLabels:
+      management.cattle.io/cluster-name: fleet-local
   resources:
     - name: traefik
       namespace: traefik
       targetNamespace: traefik
       chart:
         name: traefik
-        version: 10.3.0   # Adjust the version as needed
+        version: 10.3.0
         repo: https://helm.traefik.io/traefik
         valuesFile: ./charts/traefik/values.yaml
     - name: wordpress
@@ -19,6 +21,6 @@ spec:
       targetNamespace: wordpress
       chart:
         name: wordpress
-        version: 11.0.0  # Adjust the version as needed
+        version: 11.0.0
         repo: https://charts.bitnami.com/bitnami
         valuesFile: ./charts/wordpress/values.yaml
