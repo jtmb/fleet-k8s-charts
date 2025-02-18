@@ -46,4 +46,16 @@ spec:
   paths:
     - "wordpress-stack/**"
 
+---
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: rancher-stack-deployment
+  namespace: fleet-local
+spec:
+  repo: "https://github.com/jtmb/fleet-k8s-charts.git"
+  branch: "master"
+  paths:
+    - "rancher-stack/**"
+
 
