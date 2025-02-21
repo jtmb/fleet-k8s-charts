@@ -6,7 +6,7 @@ metadata:
     app: longhorn-test-cifs
 spec:
   capacity:
-    storage: 1Gi
+    storage: 100Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
