@@ -16,7 +16,9 @@ spec:
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
-        command: ["cloudflared", "tunnel", "--no-autoupdate", "run", "--token", "$TUNNEL_TOKEN"]
+        command: ["/bin/bash", "-c"]
+        args:
+          - cloudflared tunnel --no-autoupdate run --token "$TUNNEL_TOKEN"
         env:
         - name: TUNNEL_TOKEN
           valueFrom:
