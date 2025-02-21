@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: cloudflared-tunnel
   namespace: cattle-system
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -15,7 +16,13 @@ metadata:
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
-        command: ["/bin/sh", "-c", "cloudflared tunnel --no-autoupdate run --token $TUNNEL_TOKEN"]
+        command:
+          - "cloudflared"
+          - "tunnel"
+          - "--no-autoupdate"
+          - "run"
+          - "--token"
+          - "$(TUNNEL_TOKEN)"  # Direct environment variable substitution
         env:
         - name: TUNNEL_TOKEN
           valueFrom:
