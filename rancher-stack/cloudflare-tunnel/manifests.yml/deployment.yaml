@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: cloudflared-tunnel
   namespace: cattle-system
-spec:
   replicas: 1
   selector:
     matchLabels:
@@ -16,7 +15,7 @@ spec:
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
-        command: ["cloudflared", "tunnel", "--no-autoupdate", "run", "--token", "$TUNNEL_TOKEN"]
+        command: ["/bin/sh", "-c", "cloudflared tunnel --no-autoupdate run --token $TUNNEL_TOKEN"]
         env:
         - name: TUNNEL_TOKEN
           valueFrom:
