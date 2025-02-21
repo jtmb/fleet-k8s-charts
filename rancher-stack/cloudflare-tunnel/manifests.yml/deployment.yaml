@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudflared-tunnel
-  namespace: cattle-system
+  namespace: cloudflare-tunnel
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: cloudflared-tunnel
@@ -16,9 +16,7 @@ spec:
       containers:
       - name: cloudflared
         image: cloudflare/cloudflared:latest
-        command: ["cloudflared tunnel"]
-        args:
-          - --no-autoupdate run --token "$TUNNEL_TOKEN"
+        command: ["cloudflared", "tunnel", "--no-autoupdate", "run", "--token", "$TUNNEL_TOKEN"]
         env:
         - name: TUNNEL_TOKEN
           valueFrom:
