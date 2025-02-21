@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: cloudflare-tunnel
-          image: linuxserver/cloudflare-tunnel:latest
+          image: cloudflare/cloudflared::latest
           env:
             - name: TUNNEL_TOKEN
               valueFrom:
