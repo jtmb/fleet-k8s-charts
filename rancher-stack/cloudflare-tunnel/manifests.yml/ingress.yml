@@ -5,6 +5,7 @@ metadata:
   namespace: cattle-system
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/secure-backends: "true"  # Indicate secure backend
 spec:
   rules:
     - host: rancher-dev.jtmb.cc  # Replace with your domain
@@ -16,4 +17,8 @@ spec:
               service:
                 name: rancher
                 port:
-                  number: 80
+                  number: 80  # Ensure this points to the correct HTTP service
+  tls:
+  - hosts:
+    - rancher-dev.jtmb.cc
+    secretName: rancher-dev-tls  # Add the correct TLS secret
