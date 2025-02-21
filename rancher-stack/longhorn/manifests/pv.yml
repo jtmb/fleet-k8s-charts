@@ -6,13 +6,11 @@ metadata:
     app: longhorn-test-cifs
 spec:
   capacity:
-    storage: 100Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
-    - username=my_user
-    - password=my_password
     - uid=33
     - gid=33
     - file_mode=0755
@@ -21,4 +19,7 @@ spec:
     driver: smb.csi.k8s.io
     volumeHandle: "smb-plex-share"
     volumeAttributes:
-      source: "//192.168.0.3/plex_smb_share"
+      source: "//192.168.0.3/backups"
+    nodeStageSecretRef:
+      name: cifs-secret
+      namespace: default
