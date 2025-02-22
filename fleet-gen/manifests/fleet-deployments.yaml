@@ -2,7 +2,7 @@
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: hookie-deployment
+  name: dev-hookie-deployment
   namespace: fleet-local
 spec:
   repo: "https://github.com/jtmb/fleet-k8s-charts.git"
@@ -14,7 +14,7 @@ spec:
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata: 
-  name: media-stack-deployment
+  name: dev-media-stack-deployment
   namespace: fleet-local
 spec:
   repo: "https://github.com/jtmb/fleet-k8s-charts.git"
@@ -26,7 +26,7 @@ spec:
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: website-stack-deployment
+  name: dev-website-stack-deployment
   namespace: fleet-local
 spec:
   repo: "https://github.com/jtmb/fleet-k8s-charts.git"
@@ -38,7 +38,7 @@ spec:
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: wordpress-stack-deployment
+  name: dev-wordpress-stack-deployment
   namespace: fleet-local
 spec:
   repo: "https://github.com/jtmb/fleet-k8s-charts.git"
@@ -50,7 +50,7 @@ spec:
 apiVersion: fleet.cattle.io/v1alpha1
 kind: GitRepo
 metadata:
-  name: rancher-stack-deployment
+  name: dev-rancher-stack-deployment
   namespace: fleet-local
 spec:
   repo: "https://github.com/jtmb/fleet-k8s-charts.git"
